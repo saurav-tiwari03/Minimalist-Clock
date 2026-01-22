@@ -81,14 +81,14 @@ const Settings = ({ settings, onSettingsChange, isLight = false }) => {
                                 onChange={(e) => handleChange('theme', e.target.value)}
                             >
                                 {THEMES.map((theme) => (
-                                    <option key={theme.id} value={theme.id}>
+                                    <option key={theme.id} value={theme.id} style={{ cursor: 'pointer' }}>
                                         {theme.name}
                                     </option>
                                 ))}
                             </select>
-                            <span 
+                            <span
                                 className="theme-dropdown-preview"
-                                style={{ 
+                                style={{
                                     background: THEMES.find(t => t.id === settings.theme)?.bg,
                                     border: `2px solid ${THEMES.find(t => t.id === settings.theme)?.card}`
                                 }}
