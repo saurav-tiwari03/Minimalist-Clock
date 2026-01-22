@@ -1,0 +1,11 @@
+# Robots.txt for Saurav's Minimalist Clock
+# https://clock.sauravgo.fun
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://clock.sauravgo.fun/sitemap.xml
+
+# Crawl-delay (optional, be nice to crawlers)
+Crawl-delay: 1

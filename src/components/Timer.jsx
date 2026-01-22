@@ -16,29 +16,19 @@ const Timer = ({ isLight = false }) => {
     const audioRef = useRef(null);
     const inputRefs = useRef({ hours: null, minutes: null, seconds: null });
 
-    // Initialize audio on mount
+    // Initialize audio on mount - only once
     useEffect(() => {
-        audioRef.current = new Audio(alarmSound);
-        audioRef.current.loop = true; // Loop continuously
-        
-        // Handle when audio ends (in case loop doesn't work)
-        const handleEnded = () => {
-            if (audioRef.current && isAlarmPlaying) {
-                audioRef.current.currentTime = 0;
-                audioRef.current.play().catch(() => {});
-            }
-        };
-        
-        audioRef.current.addEventListener('ended', handleEnded);
+        const audio = new Audio(alarmSound);
+        audio.loop = true; // Loop continuously
+        audioRef.current = audio;
         
         return () => {
             if (audioRef.current) {
-                audioRef.current.removeEventListener('ended', handleEnded);
                 audioRef.current.pause();
                 audioRef.current = null;
             }
         };
-    }, [isAlarmPlaying]);
+    }, []); // Empty dependency array - only run on mount
 
     // Play sound when timer ends
     useEffect(() => {
@@ -86,6 +76,9 @@ const Timer = ({ isLight = false }) => {
             audioRef.current.currentTime = 0;
         }
         setIsAlarmPlaying(false);
+        // Set isEditing to true to prevent the alarm from retriggering
+        // (the useEffect checks remainingTime === 0 && !isEditing && !isAlarmPlaying)
+        setIsEditing(true);
     }, []);
 
     const reset = useCallback(() => {

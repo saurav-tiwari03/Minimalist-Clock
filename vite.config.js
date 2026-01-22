@@ -10,9 +10,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['icons/icon.svg'],
       manifest: {
-        name: 'Fliqlo Clock',
-        short_name: 'Fliqlo',
-        description: 'A beautiful flip clock inspired by the classic Fliqlo screensaver',
+        name: "Saurav's Minimalist Clock - Beautiful Flip Clock",
+        short_name: 'Saurav Clock',
+        description: 'A stunning minimalist flip clock by Saurav Tiwari. Features stopwatch, timer, multiple themes, snow effects, and works offline.',
         start_url: '/',
         display: 'standalone',
         background_color: '#000000',
