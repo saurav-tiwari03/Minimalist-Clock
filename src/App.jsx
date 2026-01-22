@@ -13,6 +13,7 @@ const THEMES = {
   forest: { bg: '#0a1a0a', card: '#1a2e1a', text: '#c0e0c0', isLight: false },
   ocean: { bg: '#0a1a1a', card: '#1a2e2e', text: '#c0e0e0', isLight: false },
   warm: { bg: '#1a1410', card: '#2e2420', text: '#e0d0c0', isLight: false },
+  saffron: { bg: '#1a0f05', card: '#3d2010', text: '#ff9933', isLight: false },
 };
 
 const MODES = ['clock', 'stopwatch', 'timer'];

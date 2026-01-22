@@ -8,6 +8,7 @@ const THEMES = [
     { id: 'forest', name: 'Forest', bg: '#0a1a0a', card: '#1a2e1a', text: '#c0e0c0' },
     { id: 'ocean', name: 'Ocean', bg: '#0a1a1a', card: '#1a2e2e', text: '#c0e0e0' },
     { id: 'warm', name: 'Warm', bg: '#1a1410', card: '#2e2420', text: '#e0d0c0' },
+    { id: 'saffron', name: 'Saffron', bg: '#1a0f05', card: '#3d2010', text: '#ff9933' },
 ];
 
 const MODES = [
@@ -70,24 +71,28 @@ const Settings = ({ settings, onSettingsChange, isLight = false }) => {
                         </div>
                     </div>
 
-                    {/* Theme Selector */}
+                    {/* Theme Selector Dropdown */}
                     <div className="setting-item">
                         <label>Theme</label>
-                        <div className="theme-selector">
-                            {THEMES.map((theme) => (
-                                <button
-                                    key={theme.id}
-                                    className={`theme-btn ${settings.theme === theme.id ? 'active' : ''}`}
-                                    onClick={() => handleChange('theme', theme.id)}
-                                    title={theme.name}
-                                    style={{ background: theme.bg }}
-                                >
-                                    <span
-                                        className="theme-preview"
-                                        style={{ background: theme.card }}
-                                    />
-                                </button>
-                            ))}
+                        <div className="theme-dropdown-wrapper">
+                            <select
+                                className="theme-dropdown"
+                                value={settings.theme}
+                                onChange={(e) => handleChange('theme', e.target.value)}
+                            >
+                                {THEMES.map((theme) => (
+                                    <option key={theme.id} value={theme.id}>
+                                        {theme.name}
+                                    </option>
+                                ))}
+                            </select>
+                            <span 
+                                className="theme-dropdown-preview"
+                                style={{ 
+                                    background: THEMES.find(t => t.id === settings.theme)?.bg,
+                                    border: `2px solid ${THEMES.find(t => t.id === settings.theme)?.card}`
+                                }}
+                            />
                         </div>
                     </div>
 
