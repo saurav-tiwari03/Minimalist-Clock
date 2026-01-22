@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="64" fill="#000"/>
+  <g transform="translate(56, 156)">
+    <!-- First digit card -->
+    <rect x="0" y="0" width="180" height="200" rx="16" fill="#1a1a1a"/>
+    <line x1="0" y1="100" x2="180" y2="100" stroke="#000" stroke-width="3"/>
+    <text x="90" y="145" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="160" font-weight="bold" fill="#d4d4d4">1</text>
+    
+    <!-- Second digit card -->
+    <rect x="220" y="0" width="180" height="200" rx="16" fill="#1a1a1a"/>
+    <line x1="220" y1="100" x2="400" y2="100" stroke="#000" stroke-width="3"/>
+    <text x="310" y="145" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="160" font-weight="bold" fill="#d4d4d4">2</text>
+  </g>
+</svg>

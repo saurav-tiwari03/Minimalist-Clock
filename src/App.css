@@ -1,0 +1,326 @@
+/* ============================================
+   APP LAYOUT & CONTROL BUTTONS
+   ============================================ */
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  transition: background-color 0.5s ease;
+}
+
+/* Left side control buttons */
+.app-controls {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.app-control-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Oswald', sans-serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+  opacity: 0.7;
+  transition: opacity 0.3s, background 0.3s, border-color 0.3s;
+  backdrop-filter: blur(10px);
+}
+
+.app-control-btn:hover {
+  opacity: 1;
+}
+
+/* Dark theme buttons */
+.app-control-btn.dark {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+.app-control-btn.dark:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Light theme buttons */
+.app-control-btn.light {
+  background: rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: #333;
+}
+
+.app-control-btn.light:hover {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+/* Snow button active state */
+.app-control-btn.snow-active {
+  background: rgba(100, 180, 255, 0.25) !important;
+  border-color: rgba(100, 180, 255, 0.5) !important;
+  opacity: 1;
+}
+
+.snow-icon {
+  font-size: 16px;
+}
+
+/* ============================================
+   RESPONSIVE STYLES
+   ============================================ */
+
+/* Extra Small Devices (phones in portrait) */
+@media (max-width: 479px) {
+  .app-controls {
+    top: 10px;
+    left: 10px;
+    gap: 8px;
+  }
+  
+  .app-control-btn {
+    padding: 8px 12px;
+    font-size: 11px;
+    gap: 6px;
+    border-radius: 6px;
+  }
+  
+  .snow-icon {
+    font-size: 14px;
+  }
+  
+  /* Hide fullscreen text on mobile, show icon only */
+  .fullscreen-text {
+    display: none;
+  }
+  
+  .fullscreen-icon {
+    display: block;
+    font-size: 16px;
+  }
+}
+
+/* Small Devices (phones in landscape) */
+@media (min-width: 480px) and (max-width: 767px) {
+  .app-controls {
+    top: 12px;
+    left: 12px;
+    gap: 8px;
+  }
+  
+  .app-control-btn {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+  
+  .fullscreen-text {
+    display: inline;
+  }
+  
+  .fullscreen-icon {
+    display: none;
+  }
+}
+
+/* Medium Devices (tablets) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .app-controls {
+    top: 15px;
+    left: 15px;
+  }
+  
+  .app-control-btn {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}
+
+/* Large Devices and up */
+@media (min-width: 1024px) {
+  .app-controls {
+    top: 20px;
+    left: 20px;
+    gap: 10px;
+  }
+  
+  .app-control-btn {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+}
+
+.fullscreen-text {
+  display: inline;
+}
+
+.fullscreen-icon {
+  display: none;
+}
+
+/* ============================================
+   MODE NAVIGATION ARROWS
+   ============================================ */
+
+.mode-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 100;
+  opacity: 0.5;
+}
+
+.mode-arrow:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.mode-arrow-left {
+  left: 20px;
+}
+
+.mode-arrow-right {
+  right: 20px;
+}
+
+/* Tooltip for mode arrows */
+.mode-arrow-tooltip {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-5px);
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: capitalize;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+  z-index: 1000;
+}
+
+.mode-arrow:hover .mode-arrow-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Dark theme tooltip */
+.mode-arrow.dark .mode-arrow-tooltip {
+  background: rgba(255, 255, 255, 0.95);
+  color: #1a1a1a;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Light theme tooltip */
+.mode-arrow.light .mode-arrow-tooltip {
+  background: rgba(20, 20, 20, 0.95);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* Dark theme arrows */
+.mode-arrow.dark {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.mode-arrow.dark:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Light theme arrows */
+.mode-arrow.light {
+  background: rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: #333;
+}
+
+.mode-arrow.light:hover {
+  background: rgba(0, 0, 0, 0.12);
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+/* Responsive arrow styles */
+@media (max-width: 479px) {
+  .mode-arrow {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .mode-arrow-left {
+    left: 8px;
+  }
+  
+  .mode-arrow-right {
+    right: 8px;
+  }
+  
+  .mode-arrow svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  /* Hide tooltip on small screens - use native title instead */
+  .mode-arrow-tooltip {
+    display: none;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+  .mode-arrow {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .mode-arrow-left {
+    left: 12px;
+  }
+  
+  .mode-arrow-right {
+    right: 12px;
+  }
+  
+  .mode-arrow svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .mode-arrow {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .mode-arrow-left {
+    left: 15px;
+  }
+  
+  .mode-arrow-right {
+    right: 15px;
+  }
+}

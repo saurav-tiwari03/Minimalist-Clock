@@ -1,0 +1,478 @@
+/* ============================================
+   SHARED STYLES FOR STOPWATCH & TIMER MODES
+   ============================================ */
+
+.mode-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+}
+
+/* Colon between digits */
+.colon {
+    color: var(--card-text, #d4d4d4);
+    font-size: 80px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    opacity: 0.6;
+    margin-top: -15px;
+    user-select: none;
+}
+
+.colon.light {
+    color: #333;
+}
+
+.colon.blink {
+    animation: blink 0.5s infinite;
+}
+
+/* Stopwatch Display Wrapper */
+.stopwatch-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    max-width: 100vw;
+    overflow: visible;
+}
+
+.stopwatch-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    transform: scale(0.28);
+    transform-origin: center center;
+}
+
+/* Centiseconds for Stopwatch - positioned bottom right of wrapper */
+.stopwatch-centiseconds {
+    margin-top: -35px;
+    margin-left: auto;
+    padding-right: 20%;
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--card-text, #d4d4d4);
+    opacity: 0.7;
+    user-select: none;
+}
+
+.stopwatch-centiseconds.light {
+    color: #333;
+}
+
+.centiseconds-value {
+    letter-spacing: -2px;
+}
+
+/* Control Buttons */
+.mode-controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.mode-btn-control {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.mode-btn-control:hover {
+    opacity: 0.8;
+}
+
+.mode-btn-control.light {
+    background: rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    color: #333;
+}
+
+.mode-btn-control.primary {
+    background: rgba(100, 200, 130, 0.3);
+    border-color: rgba(100, 200, 130, 0.5);
+}
+
+.mode-btn-control.danger {
+    background: rgba(255, 100, 100, 0.3);
+    border-color: rgba(255, 100, 100, 0.5);
+}
+
+.mode-btn-control.warning {
+    background: rgba(255, 180, 100, 0.3);
+    border-color: rgba(255, 180, 100, 0.5);
+}
+
+.mode-btn-control.info {
+    background: rgba(100, 180, 255, 0.3);
+    border-color: rgba(100, 180, 255, 0.5);
+}
+
+.mode-btn-control:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.mode-btn-control svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Timer Status */
+.timer-status {
+    color: #ff6b6b;
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    animation: blink 0.5s infinite;
+    margin-top: -10px;
+}
+
+/* Timer Input Modal */
+.timer-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    padding: 20px;
+}
+
+.timer-modal-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.timer-modal {
+    background: rgba(30, 30, 35, 0.95);
+    border-radius: 20px;
+    padding: 28px 32px;
+    transform: scale(0.9) translateY(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 100%;
+    width: auto;
+}
+
+.timer-modal-overlay.open .timer-modal {
+    transform: scale(1) translateY(0);
+}
+
+.timer-modal.light {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.timer-modal-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.timer-modal-header h3 {
+    margin: 0;
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.timer-modal.light .timer-modal-header h3 {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.timer-inputs {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 24px;
+    justify-content: center;
+}
+
+.timer-input-group {
+    text-align: center;
+}
+
+.timer-input {
+    width: 50px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 22px;
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    outline: none;
+    transition: all 0.2s;
+}
+
+.timer-input:focus {
+    border-color: rgba(100, 180, 255, 0.5);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.timer-modal.light .timer-input {
+    background: rgba(0, 0, 0, 0.06);
+    border: 2px solid rgba(0, 0, 0, 0.15);
+    color: #333;
+}
+
+.timer-modal.light .timer-input:focus {
+    border-color: rgba(100, 180, 255, 0.5);
+}
+
+.timer-input-label {
+    margin-top: 5px;
+    font-size: 9px;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+}
+
+.timer-modal.light .timer-input-label {
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.timer-input-separator {
+    font-size: 28px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.3);
+    margin-bottom: 18px;
+}
+
+.timer-modal.light .timer-input-separator {
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.timer-modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* ============================================
+   RESPONSIVE STYLES
+   ============================================ */
+
+/* Extra Small Devices (phones in portrait) */
+@media (max-width: 479px) {
+    .mode-container {
+        gap: 20px;
+        padding: 10px;
+    }
+    
+    .colon {
+        font-size: 50px;
+        margin-top: -10px;
+    }
+    
+    .stopwatch-display {
+        transform: scale(0.28);
+        gap: 2px;
+    }
+    
+    .stopwatch-centiseconds {
+        font-size: 18px;
+        margin-top: -35px;
+        padding-right: 20%;
+    }
+    
+    .mode-controls {
+        gap: 8px;
+    }
+    
+    .mode-btn-control {
+        padding: 10px 16px;
+        font-size: 12px;
+    }
+    
+    .timer-status {
+        font-size: 16px;
+    }
+    
+    .timer-modal {
+        padding: 20px;
+        border-radius: 16px;
+    }
+    
+    .timer-input {
+        width: 44px;
+        height: 40px;
+        font-size: 18px;
+    }
+    
+    .timer-input-separator {
+        font-size: 22px;
+    }
+    
+    .timer-modal-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .timer-modal-actions .mode-btn-control {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Small Devices (phones in landscape, small tablets) */
+@media (min-width: 480px) and (max-width: 767px) {
+    .mode-container {
+        gap: 25px;
+        padding: 15px;
+    }
+    
+    .colon {
+        font-size: 60px;
+    }
+    
+    .stopwatch-display {
+        transform: scale(0.4);
+        gap: 3px;
+    }
+    
+    .stopwatch-centiseconds {
+        font-size: 28px;
+        margin-top: -25px;
+        padding-right: 12%;
+    }
+    
+    .mode-btn-control {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+    
+    .timer-input {
+        width: 48px;
+        height: 42px;
+        font-size: 20px;
+    }
+}
+
+/* Medium Devices (tablets) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .colon {
+        font-size: 70px;
+    }
+    
+    .stopwatch-display {
+        transform: scale(0.5);
+        gap: 4px;
+    }
+    
+    .stopwatch-centiseconds {
+        font-size: 36px;
+        margin-top: -20px;
+        padding-right: 10%;
+    }
+    
+    .timer-input {
+        width: 52px;
+        height: 44px;
+    }
+}
+
+/* Large Devices (desktops) */
+@media (min-width: 1024px) {
+    .mode-container {
+        gap: 35px;
+    }
+    
+    .colon {
+        font-size: 90px;
+    }
+    
+    .stopwatch-display {
+        transform: scale(0.65);
+        gap: 5px;
+    }
+    
+    .stopwatch-centiseconds {
+        font-size: 44px;
+        margin-top: -18px;
+        padding-right: 8%;
+    }
+    
+    .mode-btn-control {
+        padding: 12px 28px;
+    }
+    
+    .timer-input {
+        width: 56px;
+        height: 48px;
+        font-size: 24px;
+    }
+}
+
+/* Extra Large Devices */
+@media (min-width: 1440px) {
+    .colon {
+        font-size: 100px;
+    }
+    
+    .stopwatch-display {
+        transform: scale(0.85);
+        gap: 8px;
+    }
+    
+    .stopwatch-centiseconds {
+        font-size: 52px;
+        margin-top: -15px;
+        padding-right: 6%;
+    }
+    
+    .timer-input {
+        width: 60px;
+        height: 50px;
+    }
+}
+
+/* Ultra Wide / 4K */
+@media (min-width: 1920px) {
+    .stopwatch-display {
+        transform: scale(1);
+        gap: 10px;
+    }
+    
+    .stopwatch-centiseconds {
+        font-size: 60px;
+        margin-top: -12px;
+        padding-right: 5%;
+    }
+}

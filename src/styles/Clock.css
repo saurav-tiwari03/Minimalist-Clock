@@ -1,0 +1,207 @@
+.clock-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: max-content;
+    transform-origin: center center;
+}
+
+.clock-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.digit-group {
+    display: flex;
+    gap: 8px;
+    position: relative;
+}
+
+/* AM/PM Indicator - positioned inside the first card area */
+.ampm-indicator {
+    position: absolute;
+    top: 12%;
+    left: 8px;
+    font-family: 'Oswald', sans-serif;
+    color: var(--card-text, #d4d4d4);
+    font-size: 16px;
+    font-weight: 700;
+    z-index: 20;
+    text-transform: uppercase;
+}
+
+/* Seconds Group - positioned fixed at bottom right of screen */
+.seconds-group {
+    display: flex;
+    gap: 4px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    transform: scale(0.5);
+    transform-origin: bottom right;
+}
+
+/* ============================================
+   MOBILE FIRST RESPONSIVE DESIGN
+   ============================================ */
+
+/* Extra Small Devices (phones in portrait) */
+@media (max-width: 479px) {
+    .clock-wrapper {
+        transform: scale(0.35);
+    }
+    
+    .clock-main {
+        gap: 6px;
+    }
+    
+    .digit-group {
+        gap: 4px;
+    }
+    
+    .ampm-indicator {
+        font-size: 12px;
+        left: 4px;
+    }
+    
+    .seconds-group {
+        bottom: 6px;
+        right: 6px;
+        gap: 2px;
+        transform: scale(0.35);
+    }
+}
+
+/* Small Devices (phones in landscape, small tablets) */
+@media (min-width: 480px) and (max-width: 767px) {
+    .clock-wrapper {
+        transform: scale(0.45);
+    }
+    
+    .clock-main {
+        gap: 10px;
+    }
+    
+    .digit-group {
+        gap: 6px;
+    }
+    
+    .ampm-indicator {
+        font-size: 18px;
+        left: 6px;
+    }
+    
+    .seconds-group {
+        bottom: 8px;
+        right: 8px;
+        gap: 3px;
+        transform: scale(0.38);
+    }
+}
+
+/* Landscape mode on mobile - even smaller seconds */
+@media (max-width: 767px) and (orientation: landscape) {
+    .seconds-group {
+        bottom: 6px;
+        right: 6px;
+        transform: scale(0.3);
+    }
+}
+
+/* Medium Devices (tablets) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .clock-wrapper {
+        transform: scale(0.55);
+    }
+    
+    .clock-main {
+        gap: 15px;
+    }
+    
+    .digit-group {
+        gap: 10px;
+    }
+    
+    .ampm-indicator {
+        font-size: 24px;
+        left: 8px;
+    }
+    
+    .seconds-group {
+        bottom: 12px;
+        right: 12px;
+        gap: 4px;
+        transform: scale(0.42);
+    }
+}
+
+/* Large Devices (small desktops, laptops) */
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .clock-wrapper {
+        transform: scale(0.7);
+    }
+    
+    .clock-main {
+        gap: 20px;
+    }
+    
+    .digit-group {
+        gap: 12px;
+    }
+    
+    .ampm-indicator {
+        font-size: 28px;
+        left: 10px;
+    }
+    
+    .seconds-group {
+        bottom: 15px;
+        right: 15px;
+        gap: 5px;
+        transform: scale(0.48);
+    }
+}
+
+/* Extra Large Devices (large desktops) */
+@media (min-width: 1440px) {
+    .clock-wrapper {
+        transform: scale(0.9);
+    }
+    
+    .clock-main {
+        gap: 30px;
+    }
+    
+    .digit-group {
+        gap: 15px;
+    }
+    
+    .ampm-indicator {
+        font-size: 32px;
+        left: 12px;
+    }
+    
+    .seconds-group {
+        bottom: 18px;
+        right: 18px;
+        gap: 6px;
+        transform: scale(0.5);
+    }
+}
+
+/* Ultra Wide / 4K */
+@media (min-width: 1920px) {
+    .clock-wrapper {
+        transform: scale(1);
+    }
+    
+    .seconds-group {
+        bottom: 20px;
+        right: 20px;
+        transform: scale(0.55);
+    }
+}
