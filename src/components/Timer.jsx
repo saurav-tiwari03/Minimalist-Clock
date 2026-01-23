@@ -4,9 +4,25 @@ import '../styles/Clock.css';
 import '../styles/ModeControls.css';
 import alarmSound from '../assets/alarm-sound.mp3';
 
+// Load saved timer value from localStorage
+const loadTimerValue = () => {
+    try {
+        const saved = localStorage.getItem('fliqlo-timer-value');
+        if (saved) {
+            const value = parseInt(saved, 10);
+            if (!isNaN(value) && value > 0 && value <= 359999) {
+                return value;
+            }
+        }
+    } catch (e) {
+        console.error('Failed to load timer value:', e);
+    }
+    return 300; // 5 minutes default
+};
+
 const Timer = ({ isLight = false }) => {
-    const [totalSeconds, setTotalSeconds] = useState(300); // 5 minutes default
-    const [remainingTime, setRemainingTime] = useState(300);
+    const [totalSeconds, setTotalSeconds] = useState(loadTimerValue);
+    const [remainingTime, setRemainingTime] = useState(loadTimerValue);
     const [isRunning, setIsRunning] = useState(false);
     const [isEditing, setIsEditing] = useState(true);
     const [isAlarmPlaying, setIsAlarmPlaying] = useState(false);
@@ -29,6 +45,15 @@ const Timer = ({ isLight = false }) => {
             }
         };
     }, []); // Empty dependency array - only run on mount
+
+    // Save timer value to localStorage whenever it changes
+    useEffect(() => {
+        try {
+            localStorage.setItem('fliqlo-timer-value', totalSeconds.toString());
+        } catch (e) {
+            console.error('Failed to save timer value:', e);
+        }
+    }, [totalSeconds]);
 
     // Play sound when timer ends
     useEffect(() => {

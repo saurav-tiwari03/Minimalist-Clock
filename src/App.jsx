@@ -70,8 +70,23 @@ function App() {
       setIsFullscreen(!!document.fullscreenElement);
     };
 
+    const handleKeyDown = (e) => {
+      // Toggle fullscreen on 'F' key press (ignore if typing in an input)
+      if (e.key === 'f' || e.key === 'F') {
+        const tagName = e.target.tagName.toLowerCase();
+        if (tagName !== 'input' && tagName !== 'textarea') {
+          e.preventDefault();
+          toggleFullscreen();
+        }
+      }
+    };
+
     document.addEventListener('fullscreenchange', handleFullscreenChange);
-    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
   }, []);
 
   // Apply animation and theme settings as CSS custom properties
