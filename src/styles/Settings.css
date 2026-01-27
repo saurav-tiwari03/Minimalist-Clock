@@ -392,6 +392,24 @@
     color: #fff;
 }
 
+.settings-footer-link {
+    text-decoration: none;
+    transition: opacity 0.2s, filter 0.2s;
+    font-weight: 500;
+}
+
+.settings-footer-link:hover {
+    opacity: 0.8;
+    filter: brightness(1.2);
+}
+
+.settings-footer-divider {
+    width: 1px;
+    height: 14px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 0 8px;
+}
+
 .github-icon {
     width: 14px;
     height: 14px;
